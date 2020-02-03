@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//This class is a test class that i used to test my Hand, YahtzeeDie, and Dice class within this program
 public class DiceTest
 {
     public static void main(String[] args)

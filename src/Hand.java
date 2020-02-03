@@ -5,24 +5,36 @@ import java.util.Comparator;
 
 public class Hand extends YahtzeeDie
 {
+
     private ArrayList<YahtzeeDie> hand;
-    //creates an array of data type YahtzeeDie
+    //Constructor - creates an array of data type YahtzeeDie
     public Hand()
     {
         hand = new ArrayList<YahtzeeDie>();
     }
 
     //adds a Yahtzee die to the current hand
+    /*
+     *Gives the ability to add a die of type YahtzeeDie to hand, along with an index spot to place it in
+     * params: integer which is an index position, and a die of type YahtzeeDie
+     * doesn't return anything just adds to hand
+     */
     public void addHand(int index, YahtzeeDie die) {
         hand.add(index, die);
     }
 
-    //Sorts hand by integer comparison smallest to largest
+    /*
+     *Sorts hand by integer comparison smallest to largest
+     * returns nothing, however, organizes the hand e.g. (2, 3, 5, 6, 6)
+     */
     public void sortHand() {
         hand.sort(Comparator.comparingInt(YahtzeeDie::getSideUp));
     }
 
-    //Displays the hand
+    /*
+     *Displays hand to the user
+     * returns nothing just outputs a the hand
+     */
     public void showHand()
     {
         for (int i = 0; i < hand.size(); i++) {
@@ -31,6 +43,10 @@ public class Hand extends YahtzeeDie
         System.out.println();
     }
 
+    /*
+     * Iterates through hand and totals the hand
+     * returns an integer
+     */
     //totals the hand and returns an integer
     public int totalHand()
     {
@@ -44,7 +60,10 @@ public class Hand extends YahtzeeDie
         return total;
     }
 
-    //returns the longest length of a straight found in hand
+    /*
+     *Computes the longest length of a straight found in hand
+     *returns an integer
+     */
     public int findStraight()
     {
         int maxLength = 1;
@@ -65,7 +84,10 @@ public class Hand extends YahtzeeDie
         return maxLength;
     }
 
-    //iterates through a hand and looks to see if a full house is found or not
+    /*
+     *iterates through hand and looks to see if a fullHouse is found
+     *returns a boolean (t/f)
+     */
     public boolean fullHouseFound()
     {
         boolean foundFH = false;
@@ -92,7 +114,10 @@ public class Hand extends YahtzeeDie
         return foundFH;
     }
 
-    //iterates through hand and looks for the max of a kind within the hand and returns an integer
+    /*
+     *iterates through hand and looks for the max of a kind within the hand and returns an integer
+     *returns an integer
+     */
     public int maxOfAKind()
     {
         int maxCount = 0;
@@ -112,13 +137,19 @@ public class Hand extends YahtzeeDie
         return maxCount;
     }
 
-    //Returns die side up inside the hand
+    /*
+     *Fetches the a die given the index and returns the sideUp value of that die
+     * params: integer index position in hand arrayList
+     * Returns int,  die side up inside the hand
+     */
     public int getDieSideUpInHand(int index)
     {
        return hand.get(index).getSideUp();
     }
 
-    //rolls a die inside the hand
+    /*
+     * calls the roll method of Dice class and reassigns that Dice or YahtzeeDie with another value [1-6]
+     */
     public void rollDieInHand(int index)
     {
         hand.get(index).roll();
